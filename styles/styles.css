@@ -1,0 +1,685 @@
+@font-face {
+    font-family: 'BlahBlah Solid';
+    src: url('../assets/fonts/BlahBlah-Solid.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+:root {
+    --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --text-color: #282626;
+}
+
+/* ======================== Base Layout ======================== */
+html {
+    height: 100vh;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-image: url('../assets/Background-2.svg');
+    background-repeat: repeat;
+    background-size: contain;
+    margin: 0;
+    overflow-x: scroll;
+}
+
+/* ======================== Navigation ======================== */
+nav {
+    padding-top: 0.5em;
+    padding-bottom: 0.3em;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 15%;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+header nav ul li:nth-child(2) {
+    margin-left: auto;
+}
+
+header nav ul li a {
+    color: var(--text-color);
+    font-weight: 400;
+    text-decoration: none;
+    font-size: 1vmax;
+}
+
+#navlogo {
+    width: 6vmax;
+    height: auto;
+    display: block;
+}
+
+/* ======================== Hero ======================== */
+
+#indexMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#face-anim {
+    height: 50vmax;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vmax;
+}
+
+#logosvg {
+    margin-top: -10vmax;
+    overflow: none;
+
+}
+
+#MainNav {
+    width: 100%;
+
+}
+
+#MainNav ul {
+    list-style-type: none;
+    margin: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#MainNav ul li a {
+    color: var(--text-color);
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 1.1vmax;
+}
+
+#MainNav ul li:nth-of-type(2) a {
+    margin-right: 3vmax;
+}
+
+
+/* ======================== Hero Animation ======================== */
+
+.Starpopup {
+    transform-origin: center center;
+    animation:
+        SterAnim 2s ease-in-out;
+}
+
+.StarpopupRight {
+    transform-origin: center center;
+    animation:
+        SterAnimRight 2s ease-in-out;
+}
+
+/* #logosvg path[fill="url(#f)"] {
+    animation: Hoofd 0.1s  alternate infinite;
+    transform-origin: center center;
+} */
+
+.hoofdAnim {
+    animation: Hoofd 1s alternate infinite;
+    transform-origin: center center;
+}
+
+@keyframes SterAnim {
+    0% {
+        translate: 0 0;
+    }
+
+    55% {
+        translate: 0 -29%;
+        rotate: -8deg;
+    }
+
+    100% {
+        translate: 0 0;
+    }
+}
+
+@keyframes SterAnimRight {
+    0% {
+        translate: 0 0;
+    }
+
+    55% {
+        translate: 0 -26%;
+        rotate: 6deg;
+
+    }
+
+    100% {
+        translate: 0 0;
+    }
+}
+
+@keyframes Hoofd {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-3deg);
+    }
+}
+
+/* ======================== Footer ======================== */
+
+#ContactFooter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    transform: translateY(120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+    z-index: 3;
+}
+
+#ContactFooter.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#ContactFooter svg path:nth-of-type(2) {
+    animation: bob 1.2s ease-in-out infinite alternate;
+    transform-origin: center center;
+}
+
+
+@keyframes bob {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-0.15vmax);
+        rotate: -8deg;
+    }
+
+    /* adjust height as needed */
+}
+
+#ContactFooter a {
+    font-family: 'BlahBlah Solid', var(--font-family);
+    color: var(--text-color);
+    font-weight: 400;
+    text-decoration: none;
+    font-size: 1.6vmax;
+    line-height: 1.3;
+}
+
+/* ======================== Projects Overview ======================== */
+#ProjectsMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    height: 100vh;
+}
+
+#ContentContainer {
+    display: grid;
+    grid-template-columns: 0.33fr 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 6vmax;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 6vmax;
+}
+
+#ContentContainer ul {
+    list-style-type: none;
+}
+
+#ProjectItem {
+    background-image: url('/assets/ItemBack-2.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    grid-column: 2 / 2;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 52vmax;
+    height: 24vmax;
+}
+
+#ProjectItem.IdleAnimationBG {
+    animation: rotateBG 4s infinite alternate ease-in-out;
+}
+
+#ProjectItemLink {
+    text-decoration: none;
+    display: contents;
+}
+
+#ProjectImage {
+    width: 80%;
+    height: auto;
+}
+
+#ProjectOrder {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    align-self: center;
+    justify-self: flex-start;
+}
+
+#ProjectOrder svg {
+    width: 3vmax;
+    height: auto;
+    display: block;
+    margin-top: 1vmax;
+}
+
+#ProjectTitle {
+    grid-column: 1 / -1;
+    grid-row: 2 / 2;
+    text-align: center;
+}
+
+#ProjectTitle img {
+    width: 40vmax;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: 0.5s ease;
+}
+
+.active {
+    fill: gold;
+    transition: 0.5s ease-in;
+}
+
+/* ======================== Project Animations ======================== */
+@keyframes rotateBG {
+    from {
+        transform: rotate(-3deg);
+    }
+
+    to {
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes rotateImage {
+    from {
+        transform: rotate(2deg);
+    }
+
+    to {
+        transform: rotate(-2deg);
+    }
+}
+
+#ProjectTitleText,
+#ProjectImage {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.Idle {
+    animation: rotateImage 4s infinite alternate ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+    animation: fadeOut 1.5s ease-in-out;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    30% {
+        opacity: 0;
+        transform: translateY(20vmax);
+        rotate: 5deg;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.Projectstar svg path.active {
+    fill: #B7C9A2;
+    transition: fill 0.8s ease;
+}
+
+.Projectstar svg path:hover {
+    fill: #B7C9A2;
+    transition: fill 0.4s ease;
+}
+
+/* ======================== Project Detail Layout ======================== */
+#Detail {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 6fr;
+    gap: 12vmax;
+    justify-content: center;
+    align-items: center;
+    margin: 10vmax 14vmax 0;
+}
+
+#Banner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('../assets/ItemBack-2.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    animation: rotateBG 8s alternate infinite;
+    z-index: 0;
+}
+
+#Banner img {
+    position: relative;
+    z-index: 1;
+    width: 45vmax;
+    height: auto;
+}
+
+/* ======================== Project Intro ======================== */
+#Intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    margin-top: -4vmax;
+}
+
+#Intro div {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 12vmax;
+    align-self: stretch;
+}
+
+#Intro div h1 {
+    font-size: 1.2vmax;
+    color: #A72C2C;
+}
+
+#Intro div img {
+    margin-top: -1vmax;
+    width: 15vmax;
+}
+
+#Intro p:first-of-type {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 1.1vmax;
+    width: 90%;
+}
+
+#Intro p:nth-of-type(2) {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 1.1vmax;
+    width: 90%;
+    margin-top: -0.5vmax;
+}
+
+#Intro p:nth-of-type(3) {
+    grid-column: 2;
+    grid-row: 3;
+    font-size: 1.1vmax;
+    width: 90%;
+    margin-top: -1vmax;
+}
+
+#Intro .skull {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: flex-start;
+    justify-self: end;
+    translate: 0 -8vmax;
+}
+
+#Intro #button {
+    grid-column: 1;
+    grid-row: 3;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 25%;
+    border-radius: 2px;
+    border: 5px solid #AD2E2E;
+    background: #AD2E2E;
+    text-decoration: none;
+    color: #FAFDF6;
+    font-size: 0.9vmax;
+    font-weight: 400;
+}
+
+/* ======================== Project Media ======================== */
+#Images {
+    display: flex;
+    justify-content: center;
+}
+
+#Images .IMG {
+    margin: 1%;
+    width: 35vmax;
+    height: auto;
+}
+
+#Images .MeesterproefIMG1 {
+    margin: 1%;
+    width: 60vmax;
+    height: auto;
+}
+
+.DieterIMG {
+    height: 50vmax;
+}
+
+.umbrella {
+    position: fixed;
+    top: 0;
+    left: 40%;
+    height: 28vmax;
+    animation: umbrella 8s ease-in-out alternate infinite;
+}
+
+@keyframes umbrella {
+    0% {
+        translate: -44vmax 10vmax;
+    }
+
+    100% {
+        translate: -46vmax 20vmax;
+        rotate: 2deg;
+    }
+}
+
+/* ======================== Progress Section ======================== */
+#Progress {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+#Progress div {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 5vmax;
+    align-self: stretch;
+}
+
+#Progress .scream {
+    position: absolute;
+    margin-top: 4vmax;
+    width: 16vmax;
+    height: auto;
+    animation: rotateBG 4s alternate infinite;
+}
+
+#Progress div img {
+    margin-top: -1.7vmax;
+    width: 8vmax;
+}
+
+#Progress div h2 {
+    font-size: 1.2vmax;
+    color: #A72C2C;
+}
+
+#Progress p:first-of-type {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 1.1vmax;
+    width: 95%;
+}
+
+#Progress p:nth-of-type(2) {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 1.1vmax;
+    width: 95%;
+}
+
+#Progress p:nth-of-type(3) {
+    grid-column: 2;
+    grid-row: 3;
+    font-size: 1.1vmax;
+    width: 95%;
+}
+
+#ProgressBanner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#ProgressBanner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('../assets/ProgressBack.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: rotateBG 8s alternate infinite;
+    z-index: 0;
+}
+
+#ProgressBanner #wrapper,
+#ProgressBanner #wrapperNecro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 35vmax;
+    position: relative;
+    z-index: 1;
+}
+
+#ProgressBanner #wrapper img {
+    margin: 0.5%;
+    width: 25vmax;
+}
+
+#ProgressBanner #wrapperNecro .NecroIMG {
+    margin: 1%;
+    width: 30vmax;
+}
+
+#ProgressBanner #wrapperNecro .RecordplayerIMG {
+    margin: 1%;
+    width: 50vmax;
+}
+
+#ProgressBanner #wrapperNecro .IMGmeesterproef {
+    width: 45vmax;
+}
+
+/* ======================== Skills ======================== */
+#Skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+#Skills #SkillsHead {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 5vmax;
+    align-self: stretch;
+}
+
+#Skills #SkillsHead img {
+    margin-top: -1.7vmax;
+    width: 6vmax;
+}
+
+#Skills #SkillsHead h3 {
+    font-size: 1.3vmax;
+    color: #A72C2C;
+}
+
+#SkillsList {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    list-style-type: none;
+    font-size: 1.2vmax;
+    width: 90%;
+}
+
+#SkillsList li {
+    margin-top: 3%;
+}
