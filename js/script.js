@@ -2,7 +2,7 @@ const initLogoAnimation = () => {
     const container = document.getElementById('logosvg');
     if (!container) return;
 
-    fetch('../assets/logosvg.svg')
+    fetch('./assets/logosvg.svg')
         .then(res => {
             if (!res.ok) throw new Error(`HTTP ${res.status} while fetching SVG`);
             return res.text();
@@ -57,7 +57,7 @@ const initSkeleton = () => {
     const container = document.getElementById('skeleton');
     if (!container) return;
 
-    fetch('../assets/skellihead.svg')
+    fetch('./assets/skellihead.svg')
         .then(res => {
             if (!res.ok) throw new Error(`HTTP ${res.status} while fetching SVG`);
             return res.text();

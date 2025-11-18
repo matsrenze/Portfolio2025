@@ -10,40 +10,40 @@
 
 const projects = [
     {
-        image: '../assets/BlahBlahBanner.png',
-        title: '../assets/BlahHeader.svg',
-        link: '../html/blahblah.html',
+        image: './assets/BlahBlahBanner.png',
+        title: './assets/BlahHeader.svg',
+        link: './blahblah.html',
         orderValue: 0,
     },
 
     {
-        image: '../assets/Necromancer.png',
-        title: '../assets/NecromancerHeader.svg',
-        link: '../html/necromancer.html',
+        image: './assets/Necromancer.png',
+        title: './assets/NecromancerHeader.svg',
+        link: './necromancer.html',
         orderValue: 1,
     },
     {
-        image: '../assets/RecordPlayer.png',
-        title: '../assets/RecordplayerTitle-2.svg',
-        link: '../html/recordplayer.html',
+        image: './assets/RecordPlayer.png',
+        title: './assets/RecordplayerTitle-2.svg',
+        link: './recordplayer.html',
         orderValue: 2,
     },
      {
-        image: '../assets/TDIMG.png',
-        title: '../assets/TDtitle.svg',
-        link: '../html/touchdesigner.html',
+        image: './assets/TDIMG.png',
+        title: './assets/TDtitle.svg',
+        link: './touchdesigner.html',
         orderValue: 3,
     },
       {
-        image: '../assets/DSC25img.png',
-        title: '../assets/DSCtitle.svg',
-        link: '../html/dsc.html',
+        image: './assets/DSC25img.png',
+        title: './assets/DSCtitle.svg',
+        link: './dsc.html',
         orderValue: 4,
     },
          {
-        image: '../assets/MeesterproefIMG.png',
-        title: '../assets/MeesterproefTitle.svg',
-        link: '../html/meesterproef.html',
+        image: './assets/MeesterproefIMG.png',
+        title: './assets/MeesterproefTitle.svg',
+        link: './meesterproef.html',
         orderValue: 5,
     },
 
@@ -210,7 +210,7 @@ const initSkeleton = () => {
     const container = document.getElementById('skeleton');
     if (!container) return;
 
-    fetch('../assets/skellihead.svg')
+    fetch('./assets/skellihead.svg')
         .then(res => {
             if (!res.ok) throw new Error(`HTTP ${res.status} while fetching SVG`);
             return res.text();
