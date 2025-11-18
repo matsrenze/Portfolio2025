@@ -19,7 +19,7 @@ html {
 body {
     font-family: var(--font-family);
     color: var(--text-color);
-    background-image: url('../assets/background-2.svg');
+    background-image: url('../assets/background.png');
     background-repeat: repeat;
     background-size: contain;
     margin: 0;
