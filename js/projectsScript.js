@@ -23,7 +23,7 @@ const projects = [
         orderValue: 1,
     },
     {
-        image: './assets/RecordPlayer.png',
+        image: './assets/RecordPLayer.png',
         title: './assets/RecordplayerTitle-2.svg',
         link: './recordplayer.html',
         orderValue: 2,
