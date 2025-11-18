@@ -258,7 +258,7 @@ header nav ul li a {
 }
 
 #ProjectItem {
-    background-image: url('/assets/ItemBack-2.svg');
+    background-image: url('../assets/ItemBack-2.svg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
