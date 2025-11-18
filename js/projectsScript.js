@@ -62,14 +62,10 @@ let isLoaded = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     isLoaded = true; 
-    updateProject(0); // first project active on load
+    updateProject(0, { instant: true }); // first project active on load
     ProjectItem.classList.remove('fade-out');
     ProjectTitle.classList.remove('fade-out');
-
-     ProjectItem.classList.toggle('Idle');
-     ProjectImage.classList.toggle('Idle');
-  
-
+    toggleIdleAnimations(true);
 });
 
 window.addEventListener('wheel', async (e) => {
@@ -124,28 +120,40 @@ async function waitForTransition(el, type = 'animationend', fallback = 1500) {
 
 
 
-async function updateProject(index) {
-    if (isAnimating) { pendingIndex = index; return; }
-    isAnimating = true;
-    isLoaded = false;
+async function updateProject(index, options = {}) {
+    const { instant = false } = options;
+
+    if (!instant && isAnimating) { pendingIndex = index; return; }
 
     const project = projects[index];
-
-    // Fade out both elements
-
-    ProjectItem.classList.add('fade-out');
-    ProjectTitle.classList.add('fade-out');
-
-    setTimeout(() => {
+    const applyProjectData = () => {
         ProjectImage.src = project.image;
         ProjectTitle.src = project.title;
         ProjectLink.href = project.link;
-    }, 300);
+    };
+    const updateStarStates = () => {
+        stars.forEach((path, i) => {
+            path.classList.toggle('active', i === project.orderValue);
+        });
+    };
 
-        // Update star states
-    stars.forEach((path, i) => {
-        path.classList.toggle('active', i === project.orderValue);
-    });
+    if (instant) {
+        applyProjectData();
+        updateStarStates();
+        isLoaded = true;
+        toggleIdleAnimations(true);
+        return;
+    }
+
+    isAnimating = true;
+    isLoaded = false;
+
+    // Fade out both elements
+    ProjectItem.classList.add('fade-out');
+    ProjectTitle.classList.add('fade-out');
+
+    setTimeout(applyProjectData, 300);
+    updateStarStates();
 
     await Promise.all([
         waitForTransition(ProjectImage),
@@ -289,5 +297,3 @@ document.addEventListener('DOMContentLoaded', () => {
     initSkeleton();
     initContactFooter();
 });
-
-
